@@ -20,33 +20,39 @@ def canUnlockAll(boxes):
     if boxes is None or len(boxes) == 0:
         return False
 
-    if len(boxes) == 1:
+    if type(boxes) is not list:
+        return False
+
+    if len(boxes) == 1 and type(boxes[0]) is list:
+        return True
+
+    if len(boxes) == 1 and type(boxes[0]) is not list:
         return False
 
     if checkAllBoxes(boxes) is False:
         return False
 
     """Checking if all boxes can be unlocked or not"""
-    v = True
-    keys = []
-    used_boxes = set()
-    for box_number in range(len(boxes)):
-        for i in range(len(boxes[box_number])):
-            if box_number == 0:
-                keys.append(boxes[box_number][i])
-                used_boxes.add(box_number)
-            else:
-                if box_number in keys:
-                    keys.append(boxes[box_number][i])
-                    used_boxes.add(box_number)
+    opened = {}
+    opened[0] = True
+    for i in range(1, len(boxes)):
+        for j in range(len(boxes[i])):
+            opened[i] = False
 
-    for box_number in range(len(boxes)):
-        if box_number not in used_boxes:
-            for i in range(len(boxes[box_number])):
-                if box_number in keys:
-                    keys.append(boxes[box_number][i])
-                    used_boxes.add(box_number)
-                else:
-                    v = False
+    keys = set()
+    for i in range(len(boxes[0])):
+        keys.add(boxes[0][i])
+    old_len = 0
 
-    return v
+    while old_len < 100:
+        for i in range(1, len(boxes)):
+            for j in range(len(boxes[i])):
+                if i in keys:
+                    keys.add(boxes[i][j])
+                    opened[i] = True
+                    old_len += 1
+
+    v = False
+    if v in opened.values():
+        return False
+    return True
