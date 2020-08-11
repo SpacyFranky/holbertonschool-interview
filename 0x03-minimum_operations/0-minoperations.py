@@ -3,6 +3,7 @@
 Minimum Operations
 """
 
+
 def minOperations(n):
     """ Calculates the fewest number of operations needed to result
         in exactly n H characters in the file
@@ -11,7 +12,7 @@ def minOperations(n):
         return 0
     if (type(n) is not int):
         return 0
-    
+
     n_op = 0
     copy_all = 1
     h = 1
@@ -23,5 +24,5 @@ def minOperations(n):
         else:
             h += copy_all
             n_op += 1
-    
+
     return n_op
