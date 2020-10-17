@@ -11,7 +11,8 @@
 */
 int is_palindrome(unsigned long n)
 {
-	int i, j;
+	/* This method takes more time to finish
+	* int i, j;
 	char buffer[21];
 	(void)(n);
 
@@ -25,4 +26,20 @@ int is_palindrome(unsigned long n)
 		j--;
 	}
 	return (1);
+	*/
+
+	unsigned long i, sum, rest;
+
+	sum = 0;
+	for (i = n; n != 0; n = n / 10)
+	{
+		rest = n % 10;
+		sum = sum * 10 + rest;
+	}
+
+	if (i != sum)
+		return (0);
+
+	return (1);
+
 }
