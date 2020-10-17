@@ -12,7 +12,7 @@
 int is_palindrome(unsigned long n)
 {
 	int i, j;
-	char buffer[sizeof(unsigned long) * 8 + 1];
+	char buffer[21];
 	(void)(n);
 
 	sprintf(buffer, "%lu", n);
