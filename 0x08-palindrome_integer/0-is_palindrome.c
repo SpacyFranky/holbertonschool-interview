@@ -17,13 +17,12 @@ int is_palindrome(unsigned long n)
 
         sprintf(buffer, "%lu", n);
 
+        j = strlen(buffer) - 1;
         for (i = 0; i <= j; i++)
         {
-                for (j = strlen(buffer) - 1; j >= i; j--)
-                {
-                        if (buffer[i] != buffer[j])
-                                return (0);
-                }
+                if (buffer[i] != buffer[j])
+                        return (0);
+                j--;
         }
         return (1);
 }
