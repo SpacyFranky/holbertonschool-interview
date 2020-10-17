@@ -9,39 +9,32 @@
 */
 int is_palindrome(listint_t **head)
 {
-	int *list;
-	int i, j, length;
 	listint_t *tmp;
+	listint_t *current;
+	listint_t *prev;
+	listint_t *next;
 
-	if (head == NULL)
-		return (1);
-	
-	i = 0;
 	tmp = *head;
-	while (tmp != NULL)
-	{
-		i++;
-		tmp = tmp->next;
-	}
-	length = i + 1;
+	current = tmp;
+	prev = NULL;
+	next = NULL;
 
-	list = malloc(sizeof(int) * length);
-	if (list == NULL)
-		return (0);
-
-	i = 0;
-	while (tmp != NULL)
+	/* Reversing the list */
+	while (current != NULL)
 	{
-		list[i] = tmp->n;
-		tmp = tmp->next;
+		next = current->next;
+		current->next = prev;
+		prev = current;
+		current = next;
 	}
-	j = length;
-	for (i = 0; i <= j; i++)
+	tmp = prev;
+
+	while ((*head)->next != NULL)
 	{
-		if (list[i] != list[j])
+		if ((*head)->n != tmp->n)
 			return (0);
-		j--;
+		*head = (*head)->next;
+		tmp = tmp->next;
 	}
-	free(list);
 	return (1);
 }
