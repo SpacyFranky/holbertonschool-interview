@@ -4,11 +4,11 @@
 import sys
 
 i = 0
-s = 0
 list_of_filesize = []
 list_of_status_code = []
 
 try:
+    s = 0
     for line in sys.stdin:
         file_size = line.split(" ")[8]
         file_size = file_size[:-1]
@@ -22,7 +22,7 @@ try:
                           for i in list_of_status_code)
         dictionary_items = dictionary.items()
         sorted_items = sorted(dictionary_items)
-
+        
         i = i + 1
         if (i == 10):
             i = 0
@@ -33,8 +33,3 @@ try:
 
 except KeyboardInterrupt:
     pass
-
-finally:
-    print("File size: {:d}".format(s))
-    for k, v in sorted_items:
-        print("{}: {}".format(k, v))
