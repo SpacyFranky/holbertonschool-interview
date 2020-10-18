@@ -4,15 +4,14 @@
 import sys
 
 i = 0
-list_of_filesize = []
+size = 0
 list_of_status_code = []
 
 try:
-    s = 0
     for line in sys.stdin:
         file_size = line.split(" ")[8]
         file_size = file_size[:-1]
-        list_of_filesize.append(int(file_size))
+        size += int(file_size)
 
         status_code = line.split(" ")[7]
         list_of_status_code.append(int(status_code))
@@ -25,12 +24,15 @@ try:
 
         i = i + 1
         if (i == 10):
-            i = 0
-            s += sum(list_of_filesize)
-            list_of_filesize.clear()
-            print("File size: {:d}".format(s))
+            print("File size: {:d}".format(size))
             for k, v in sorted_items:
                 print("{:d}: {:d}".format(k, v))
+            i = 0
 
 except KeyboardInterrupt:
     pass
+
+finally:
+    print("File size: {:d}".format(size))
+    for k, v in sorted_items:
+        print("{:d}: {:d}".format(k, v))
