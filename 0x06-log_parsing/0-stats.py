@@ -31,7 +31,7 @@ try:
             i = 0
 
 except Exception:
-    continue
+    pass
 
 finally:
     print("File size: {:d}".format(size))
