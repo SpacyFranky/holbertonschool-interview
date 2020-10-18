@@ -10,6 +10,7 @@
 */
 int is_palindrome(listint_t **head)
 {
+	listint_t *h;
 	listint_t *tmp;
 	listint_t *current;
 	listint_t *prev;
@@ -17,6 +18,8 @@ int is_palindrome(listint_t **head)
 
 	if (*head == NULL || head == NULL)
 		return (0);
+
+	h = *head;
 
 	tmp = NULL;
 	while (*head != NULL)
@@ -38,15 +41,11 @@ int is_palindrome(listint_t **head)
 	}
 	tmp = prev;
 
-	/*printf("==========head linked list=========\n");
-	print_listint(tmp);
-	printf("===================================\n");*/
-
-	while (*head != NULL)
+	while (h != NULL)
 	{
-		if ((*head)->n != tmp->n)
+		if (h->n != tmp->n)
 			return (0);
-		*head = (*head)->next;
+		h = h->next;
 		tmp = tmp->next;
 	}
 	return (1);
