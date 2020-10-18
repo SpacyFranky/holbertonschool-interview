@@ -1,5 +1,6 @@
 #include "lists.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 /**
 * is_palindrome - checks if a singly linked list is
@@ -13,20 +14,16 @@ int is_palindrome(listint_t **head)
 	listint_t *current;
 	listint_t *prev;
 	listint_t *next;
-	int length, i, j;
 
-	if (head == NULL)
+	if (*head == NULL || head == NULL)
 		return (0);
 
-	/* Length of the list */
-	length = 0;
-	while ((*head) != NULL)
+	tmp = NULL;
+	while (*head != NULL)
 	{
-		length++;
+		add_nodeint_end(&tmp, (*head)->n);
 		*head = (*head)->next;
 	}
-
-	tmp = *head;
 	current = tmp;
 	prev = NULL;
 	next = NULL;
@@ -41,18 +38,16 @@ int is_palindrome(listint_t **head)
 	}
 	tmp = prev;
 
-	i = 1;
-	if (length % 2 == 0)
-		j = length / 2;
-	else
-		j = length / 2 + 1;
-	while (i <= j)
+	printf("==========head linked list=========\n");
+	print_listint(tmp);
+	printf("===================================\n");
+
+	while (*head != NULL)
 	{
 		if ((*head)->n != tmp->n)
 			return (0);
 		*head = (*head)->next;
 		tmp = tmp->next;
-		i++;
 	}
 	return (1);
 }
