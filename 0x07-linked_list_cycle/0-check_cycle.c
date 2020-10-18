@@ -1,5 +1,4 @@
 #include "lists.h"
-#include <stdlib.h>
 
 /**
 * check_cycle - checks if a singly linked list
@@ -16,15 +15,12 @@ int check_cycle(listint_t *list)
 		return (0);
 	slow = list;
 	fast = list;
-	while (list != NULL)
+	while ((slow != NULL) && (fast != NULL) && (fast->next != NULL))
 	{
 		slow = slow->next;
 		fast = fast->next->next;
 		if (slow == fast)
-		{
 			return (1);
-		}
-		list = list->next;
 	}
 	return (0);
 }
