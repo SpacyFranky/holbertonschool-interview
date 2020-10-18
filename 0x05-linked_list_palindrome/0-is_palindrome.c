@@ -38,9 +38,9 @@ int is_palindrome(listint_t **head)
 	}
 	tmp = prev;
 
-	printf("==========head linked list=========\n");
+	/*printf("==========head linked list=========\n");
 	print_listint(tmp);
-	printf("===================================\n");
+	printf("===================================\n");*/
 
 	while (*head != NULL)
 	{
