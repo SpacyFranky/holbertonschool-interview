@@ -15,9 +15,9 @@ try:
         status_code = line.split(" ")[7]
         list_of_status_code.append(int(status_code))
         list_of_status_code.sort()
-            
+
         dictionary = dict((i, list_of_status_code.count(i))
-                            for i in list_of_status_code)
+                          for i in list_of_status_code)
         dictionary_items = dictionary.items()
         sorted_items = sorted(dictionary_items)
 
