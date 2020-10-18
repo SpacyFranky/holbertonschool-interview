@@ -2,10 +2,11 @@
 import sys
 
 i = 0
+j = 0
 list_of_filesize = []
 list_of_status_code = []
 s = 0
-while 1:
+while j < 4:
     while i < 10:
         try:
             line = sys.stdin.readline()
@@ -33,3 +34,4 @@ while 1:
     print("File size: {:d}".format(s))
     for k, v in sorted_items:
         print("{}: {}".format(k, v))
+    j = j + 1
