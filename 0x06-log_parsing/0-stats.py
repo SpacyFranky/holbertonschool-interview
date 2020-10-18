@@ -17,7 +17,10 @@ try:
         file_size = file_size[:-1]
         size += int(file_size)
 
-        status_code = line.split(" ")[7]
+        try:
+            status_code = line.split(" ")[7]
+        except Exception:
+            pass
         list_of_status_code.append(int(status_code))
         list_of_status_code.sort()
 
