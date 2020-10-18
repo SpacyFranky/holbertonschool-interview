@@ -27,9 +27,10 @@ try:
         if (i == 10):
             i = 0
             s += sum(list_of_filesize)
+            list_of_filesize.clear();
             print("File size: {:d}".format(s))
             for k, v in sorted_items:
-                print("{}: {}".format(k, v))
+                print("{:d}: {:d}".format(k, v))
 
 except KeyboardInterrupt:
     pass
