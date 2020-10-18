@@ -13,10 +13,19 @@ int is_palindrome(listint_t **head)
 	listint_t *current;
 	listint_t *prev;
 	listint_t *next;
+	int length, i, j;
 
 	if (head == NULL)
 		return (0);
-	
+
+	/* Length of the list */
+	length = 0;
+	while ((*head) != NULL)
+	{
+		length++;
+		*head = (*head)->next;
+	}
+
 	tmp = *head;
 	current = tmp;
 	prev = NULL;
@@ -32,12 +41,18 @@ int is_palindrome(listint_t **head)
 	}
 	tmp = prev;
 
-	while ((*head)->next != NULL)
+	i = 1;
+	if (length % 2 == 0)
+		j = length / 2;
+	else
+		j = length / 2 + 1;
+	while (i <= j)
 	{
 		if ((*head)->n != tmp->n)
 			return (0);
 		*head = (*head)->next;
 		tmp = tmp->next;
+		i++;
 	}
 	return (1);
 }
