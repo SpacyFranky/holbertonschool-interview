@@ -12,6 +12,7 @@ try:
     for line in sys.stdin:
         try:
             file_size = line.split(" ")[8]
+            int(file_size)
         except Exception:
             pass
         file_size = file_size[:-1]
@@ -19,6 +20,7 @@ try:
 
         try:
             status_code = line.split(" ")[7]
+            int(status_code)
         except Exception:
             pass
         list_of_status_code.append(int(status_code))
