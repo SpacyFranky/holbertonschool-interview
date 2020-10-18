@@ -10,7 +10,10 @@ sorted_items = {}
 
 try:
     for line in sys.stdin:
-        file_size = line.split(" ")[8]
+        try:
+            file_size = line.split(" ")[8]
+        except Exception:
+            pass
         file_size = file_size[:-1]
         size += int(file_size)
 
