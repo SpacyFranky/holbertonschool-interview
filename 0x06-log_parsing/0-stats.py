@@ -14,10 +14,9 @@ try:
             line_split = line.split(" ")
             file_size = line_split[-1]
             int(file_size)
+            size += file_size
         except Exception:
             pass
-
-        size += int(file_size)
 
         try:
             status_code = line_split[-2]
