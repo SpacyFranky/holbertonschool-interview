@@ -10,43 +10,35 @@
 */
 int is_palindrome(listint_t **head)
 {
-	listint_t *h;
+	int list[sizeof(int) * 64];
+	int i, length;
 	listint_t *tmp;
-	listint_t *current;
-	listint_t *prev;
-	listint_t *next;
 
-	if (*head == NULL || head == NULL)
-		return (1);
-
-	h = *head;
-
-	tmp = NULL;
-	while (*head != NULL)
+	/* Getting linked list's length */
+	tmp = *head;
+	length = 0;
+	while (tmp != NULL)
 	{
-		add_nodeint_end(&tmp, (*head)->n);
-		*head = (*head)->next;
-	}
-	current = tmp;
-	prev = NULL;
-	next = NULL;
-
-	/* Reversing the list */
-	while (current != NULL)
-	{
-		next = current->next;
-		current->next = prev;
-		prev = current;
-		current = next;
-	}
-	tmp = prev;
-
-	while (h != NULL)
-	{
-		if (h->n != tmp->n)
-			return (0);
-		h = h->next;
+		length++;
 		tmp = tmp->next;
 	}
+
+	/* Setting the array */
+	tmp = *head;
+	i = 0;
+	while (tmp != NULL)
+	{
+		list[i] = tmp->n;
+		i++;
+		tmp = tmp->next;
+	}
+
+	/* Checking list is palindrome or not */
+	for (i = 0; i <= length / 2; i++)
+	{
+		if (list[i] != list[length - 1 - i])
+			return (0);
+	}
+
 	return (1);
 }
