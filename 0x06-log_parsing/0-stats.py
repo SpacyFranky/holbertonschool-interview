@@ -11,15 +11,16 @@ sorted_items = {}
 try:
     for line in sys.stdin:
         try:
-            file_size = line.split(" ")[8]
+            line_split = line.split(" ")
+            file_size = line_split[-1]
             int(file_size)
-            file_size = file_size[:-1]
         except Exception:
             pass
 
+        size += int(file_size)
+
         try:
-            size += int(file_size)
-            status_code = line.split(" ")[7]
+            status_code = line_split[-2]
             int(status_code)
             list_of_status_code.append(int(status_code))
             list_of_status_code.sort()
