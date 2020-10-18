@@ -12,7 +12,7 @@ try:
     for line in sys.stdin:
         line_split = line.split(" ")
         file_size = line_split[-1]
-        
+
         size += int(file_size)
 
         status_code = line_split[-2]
@@ -30,9 +30,8 @@ try:
                 print("{:d}: {:d}".format(k, v))
             i = 0
 
-
 except Exception:
-    pass
+    continue
 
 finally:
     print("File size: {:d}".format(size))
