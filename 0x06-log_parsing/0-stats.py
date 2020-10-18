@@ -16,9 +16,9 @@ try:
             file_size = file_size[:-1]
         except Exception:
             pass
-        size += int(file_size)
 
         try:
+            size += int(file_size)
             status_code = line.split(" ")[7]
             int(status_code)
             list_of_status_code.append(int(status_code))
