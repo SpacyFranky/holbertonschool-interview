@@ -6,6 +6,7 @@ import sys
 i = 0
 size = 0
 list_of_status_code = []
+sorted_items = {}
 
 try:
     for line in sys.stdin:
