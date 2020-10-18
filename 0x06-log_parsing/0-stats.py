@@ -33,3 +33,8 @@ try:
 
 except KeyboardInterrupt:
     pass
+
+finally:
+    print("File size: {:d}".format(s))
+    for k, v in sorted_items:
+        print("{}: {}".format(k, v))
