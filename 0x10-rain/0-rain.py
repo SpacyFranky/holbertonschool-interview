@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ Calculates how much retained water """
 
+
 def rain(walls):
     """ Returns the total amount of rainwater retained """
 
