@@ -7,6 +7,10 @@ def rain(walls):
 
     if len(walls) == 0:
         return 0
+    
+    for i in walls:
+        if i < 0:
+            return 0
 
     s = 0
     for i in range(1, len(walls) - 1):
