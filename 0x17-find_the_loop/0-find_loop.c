@@ -5,13 +5,14 @@
 /**
 * find_listint_loop - finds the loop in a linked list
 * @head: start of the linked list
-* Return: the address of the node where the loop starts, or NULL if there is no loop
+* Return: the address of the node where the loop starts,
+* or NULL if there is no loop
 */
 listint_t *find_listint_loop(listint_t *head)
 {
 	listint_t *fast, *slow;
 
-	if(head == NULL || head->next == NULL)
+	if (head == NULL || head->next == NULL)
 		return (NULL);
 
 	fast = head;
@@ -19,19 +20,19 @@ listint_t *find_listint_loop(listint_t *head)
 
 	slow = slow->next;
 	fast = fast->next->next;
-	while(fast && fast->next)
+	while (fast && fast->next)
 	{
-		if(slow == fast)
+		if (slow == fast)
 			break;
 		slow = slow->next;
 		fast = fast->next->next;
 	}
 
-	if(slow != fast)
+	if (slow != fast)
 		return (NULL);
 
 	slow = head;
-	while(slow != fast)
+	while (slow != fast)
 	{
 		slow = slow->next;
 		fast = fast->next;
