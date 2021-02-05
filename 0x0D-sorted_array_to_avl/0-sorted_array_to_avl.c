@@ -67,10 +67,6 @@ avl_t *sorted_array_to_avl(int *array, size_t size)
 	if (size == 0)
 		return (NULL);
 
-	tree = malloc(sizeof(avl_t));
-	if (tree == NULL)
-		return (NULL);
-
 	parent = NULL;
 	tree = avl(array, 0, size - 1, parent);
 
