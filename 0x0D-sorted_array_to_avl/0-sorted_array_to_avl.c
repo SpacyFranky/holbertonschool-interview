@@ -12,7 +12,7 @@ avl_t *new(avl_t *parent, int value)
 {
 	avl_t *node;
 
-	node = malloc(sizeof(avl_t));
+	node = (avl_t *)malloc(sizeof(avl_t));
 	if (node == NULL)
 		return (NULL);
 
