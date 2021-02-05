@@ -41,12 +41,10 @@ avl_t *avl(int *array, int first, int last, avl_t *parent)
 	if (first > last)
 		return (NULL);
 
-	tmp = malloc(sizeof(tmp));
-	if (tmp == NULL)
-		return (tmp);
-
 	mid = (first + last) / 2;
 	tmp = new(parent, array[mid]);
+	if (tmp == NULL)
+		return (NULL);
 	tmp->left = avl(array, first, mid - 1, tmp);
 	tmp->right = avl(array, mid + 1, last, tmp);
 
@@ -62,17 +60,5 @@ avl_t *avl(int *array, int first, int last, avl_t *parent)
 */
 avl_t *sorted_array_to_avl(int *array, size_t size)
 {
-	avl_t *tree, *parent;
-
-	if (size == 0)
-		return (NULL);
-
-	tree = malloc(sizeof(avl_t));
-	if (tree == NULL)
-		return (NULL);
-
-	parent = NULL;
-	tree = avl(array, 0, size - 1, parent);
-
-	return (tree);
+	return (avl(array, 0, size - 1, NULL));
 }
