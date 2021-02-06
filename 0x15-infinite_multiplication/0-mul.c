@@ -4,6 +4,19 @@
 
 
 /**
+* max - finds max between two ints
+* @a: first int
+* @b: second int
+* Return: bigger integer
+*/
+int max(int a, int b)
+{
+	if (a > b)
+		return (a);
+	return (b);
+}
+
+/**
 * print_error - prints an error message
 * @msg: error message
 * Return: Nothing
@@ -59,22 +72,18 @@ void int_verification(char *str)
 int main(int argc, char *argv[])
 {
 	char *str;
-	int a_length, b_length;
+	int a_length, b_length, non_zero = 0;
 	int i, j, k, x, *result;
-	int non_zero = 0;
 
 	if (argc != 3)
 	{
 		print_error("Error\n");
 		exit(98);
 	}
-
 	int_verification(argv[1]);
 	int_verification(argv[2]);
-
 	a_length = length(argv[1]);
 	b_length = length(argv[2]);
-
 	result = malloc(sizeof(int) * (a_length + b_length));
 	for (i = a_length - 1; i >= 0; i--)
 	{
@@ -90,12 +99,7 @@ int main(int argc, char *argv[])
 		if (x)
 			result[k++] = x;
 		if (result[k - 1])
-		{
-			if (non_zero > k - 1)
-				non_zero = non_zero;
-			else
-				non_zero = k - 1;
-		}
+			non_zero = max(non_zero, k - 1);
 	}
 	str = malloc(sizeof(char) * 10000);
 	for (i = non_zero; i >= 0; i--)
