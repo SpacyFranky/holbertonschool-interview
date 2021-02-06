@@ -15,6 +15,8 @@ skiplist_t *linear_skip(skiplist_t *list, int value)
 
 	node = list;
 	prev = list;
+	if (list == NULL)
+		return (NULL);
 	for (node = list->express; node; node = node->express)
 	{
 		printf("Value checked at index [%lu] = [%d]\n", node->index, node->n);
