@@ -4,40 +4,51 @@
 
 
 /**
-* charToInt - converts char to int
-* @c: character
-* Return: an int
+* print_error - prints an error message
+* @msg: error message
+* Return: Nothing
 */
-int charToInt(char *c)
+void print_error(char *msg)
 {
-	int res;
-	int sign;
-	int i;
-
-	if (*c == '\0')
-		return (0);
-
-	res = 0;
-	sign = 1;
-	i = 0;
-
-	if (c[0] == '-')
+	while (*msg)
 	{
-		sign = -1;
-		i++;
+		_putchar(*msg);
+		msg++;
 	}
-
-	for (; c[i] != '\0'; ++i)
-	{
-		if (c[i] < '0' || c[i] > '9')
-			return (0);
-
-		res = res * 10 + c[i] - '0';
-	}
-
-	return (sign * res);
 }
 
+/**
+* length - counts length of string
+* @str: string
+* Return: length of string
+*/
+int length(char *str)
+{
+	int i = 0;
+
+	while (str[i])
+		i++;
+	return (i);
+}
+
+/**
+* int_verification - checks if string is composed of digits
+* @str: string
+* Return: Nothing
+*/
+void int_verification(char *str)
+{
+	int i;
+
+	for (i = 0; i < length(str); i++)
+	{
+		if (str[i] < '0' && str[i] > '9')
+		{
+			print_error("Error\n");
+			exit(98);
+		}
+	}
+}
 
 /**
 * main - multiplies two numbers
@@ -47,26 +58,50 @@ int charToInt(char *c)
 */
 int main(int argc, char *argv[])
 {
-	char *msg = "Error\n";
-	int a, b, m;
+	char *str;
+	int a_length, b_length;
+	int i, j, k, x, *result;
+	int non_zero = 0;
 
 	if (argc != 3)
 	{
-		while (*msg)
-		{
-			_putchar(*msg);
-			msg++;
-		}
-		return (EXIT_FAILURE);
+		print_error("Error\n");
+		exit(98);
 	}
 
-	a = charToInt(argv[1]);
-	b = charToInt(argv[2]);
+	int_verification(argv[1]);
+	int_verification(argv[2]);
 
-	m = a * b;
+	a_length = length(argv[1]);
+	b_length = length(argv[2]);
 
-	printf("%d\n", m);
-
-
+	result = malloc(sizeof(int) * (a_length + b_length));
+	for (i = a_length - 1; i >= 0; i--)
+	{
+		k = a_length - 1 - i;
+		x = 0;
+		for (j = b_length - 1; j >= 0; j--)
+		{
+			result[k] += (argv[1][i] - '0') * (argv[2][j] - '0') + x;
+			x = result[k] / 10;
+			result[k] = result[k] % 10;
+			k++;
+		}
+		if (x)
+			result[k++] = x;
+		if (result[k - 1])
+		{
+			if (non_zero > k - 1)
+				non_zero = non_zero;
+			else
+				non_zero = k - 1;
+		}
+	}
+	str = malloc(sizeof(char) * 10000);
+	for (i = non_zero; i >= 0; i--)
+		str[non_zero - i] = result[i] + '0';
+	str[non_zero + 1] = '\0';
+	free(result);
+	printf("%s\n", str);
 	return (0);
 }
