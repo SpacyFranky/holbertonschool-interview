@@ -4,8 +4,8 @@
 /**
 * print_array - prints array
 * @array: array of integers
-* @first: first element
-* @last: last element
+* @start: start of array
+* @end: end of array
 */
 void print_array(int *array, size_t start, size_t end)
 {
@@ -26,8 +26,8 @@ void print_array(int *array, size_t start, size_t end)
 * binary_search - searches for a value in a sorted array
 * of integers
 * @array: sorted array
-* @first: first element
-* @last: last element
+* @start: start of array
+* @end: end of array
 * @value: searched value
 * Return: index where value is located, or -1 if it's not present
 */
@@ -67,5 +67,5 @@ int advanced_binary(int *array, size_t size, int value)
 {
 	if (size == 0)
 		return (-1);
-	return (binary_search(array, 0, size - 1, value));	
+	return (binary_search(array, 0, size - 1, value));
 }
