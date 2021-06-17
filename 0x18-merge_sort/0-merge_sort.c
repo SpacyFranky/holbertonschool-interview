@@ -69,7 +69,7 @@ void top_down_split_merge(int *t, int first, int last, int *array)
 	top_down_split_merge(array, mid, last, t);
 
 	printf("Merging...\n");
-	printf("[Left]: ");
+	printf("[left]: ");
 	for (i = first; i < mid; i++)
 	{
 		printf("%d", t[i]);
