@@ -1,9 +1,8 @@
 #!/usr/bin/python3
 """ Count Words in reddit's hot articles section """
 
-import requests
 from collections import OrderedDict
-
+import requests
 
 def count_words(subreddit, word_list, word_count={}, after=''):
     """ Recursive function that queries the Reddit API """
