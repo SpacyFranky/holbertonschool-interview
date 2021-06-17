@@ -4,6 +4,7 @@
 from collections import OrderedDict
 import requests
 
+
 def count_words(subreddit, word_list, word_count={}, after=''):
     """ Recursive function that queries the Reddit API """
     if len(word_count) <= 0:
@@ -30,7 +31,7 @@ def count_words(subreddit, word_list, word_count={}, after=''):
             lowercase_title = child.get(
                 "data").get('title').lower().split(' ')
             for word in word_list:
-                word_count[word] += lowercase_title.count(word)
+                word_count[word.lower()] += lowercase_title.count(word.lower())
         count_words(subreddit, word_list, word_count, after)
     else:
         return None
