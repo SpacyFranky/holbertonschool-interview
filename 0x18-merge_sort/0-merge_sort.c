@@ -3,22 +3,6 @@
 
 
 /**
-* copy_array - copies an array to another empty array
-* @array: first array
-* @first: first index of array
-* @last: last index of array
-* @t: second array
-*/
-void copy_array(int *array, int first, int last, int *t)
-{
-	int k;
-
-	for (k = first; k < last; k++)
-		t[k] = array[k];
-}
-
-
-/**
 * top_down_merge - putting elements in the newly created array
 * @array: original array
 * @first: first index of array
@@ -130,4 +114,6 @@ void merge_sort(int *array, size_t size)
 	t = malloc(sizeof(int) * size);
 
 	top_down_merge_sort(array, t, size);
+
+	free(t);
 }
