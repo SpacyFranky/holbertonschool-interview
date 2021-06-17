@@ -30,18 +30,18 @@ void top_down_merge(int *array, int first, int mid, int last, int *t)
 {
 	int i = first;
 	int j = mid;
-	int k;
+	int k = 0;
 
 	for (k = first; k < last; k++)
 	{
-		if (i < mid && (j >= last || array[i] <= array[j]))
+		if (i < mid && (j >= last || t[i] <= t[j]))
 		{
-			t[k] = array[i];
+			array[k] = t[i];
 			i = i + 1;
 		}
 		else
 		{
-			t[k] = array[j];
+			array[k] = t[j];
 			j = j + 1;
 		}
 	}
@@ -58,6 +58,7 @@ void top_down_merge(int *array, int first, int mid, int last, int *t)
 void top_down_split_merge(int *t, int first, int last, int *array)
 {
 	int mid;
+	int i = 0;
 
 	if (last - first <= 1)
 		return;
@@ -67,7 +68,34 @@ void top_down_split_merge(int *t, int first, int last, int *array)
 
 	top_down_split_merge(array, mid, last, t);
 
-	top_down_merge(t, first, mid, last, array);
+	printf("Merging...\n");
+	printf("[Left]: ");
+	for (i = first; i < mid; i++)
+	{
+		printf("%d", t[i]);
+		if (i < mid - 1)
+			printf(", ");
+	}
+
+	printf("\n[right]: ");
+	for (i = mid; i < last; i++)
+	{
+		printf("%d", t[i]);
+		if (i < last - 1)
+			printf(", ");
+	}
+
+	top_down_merge(array, first, mid, last, t);
+
+	printf("\n");
+	printf("[Done]: ");
+	for (i = first; i < last; i++)
+	{
+		printf("%d", array[i]);
+		if (i < last - 1)
+			printf(", ");
+	}
+	printf("\n");
 }
 
 /**
@@ -78,7 +106,10 @@ void top_down_split_merge(int *t, int first, int last, int *array)
 */
 void top_down_merge_sort(int *array, int *t, int size)
 {
-	copy_array(array, 0, size, t);
+	int i;
+
+	for (i = 0; i < size; i++)
+		t[i] = array[i];
 	top_down_split_merge(t, 0, size, array);
 }
 
