@@ -13,7 +13,7 @@ def makeChange(coins, total):
     T = [0 if i == 0 else float('inf') for i in range(k)]
 
     for j in range(len(coins)):
-        for i in range(1, k): 
+        for i in range(1, k):
             coin = coins[j]
             if(i >= coins[j]):
                 T[i] = min(T[i], T[i - coin] + 1)
