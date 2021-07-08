@@ -69,7 +69,7 @@ void counting_sort(int *array, int size, int pos)
 
 	for (i = 0; i < size; i++)
 		array[i] = result[i];
-	free(result);
+
 }
 
 
@@ -83,6 +83,9 @@ void radix_sort(int *array, size_t size)
 {
 
 	int pos, max;
+
+	if (size < 2)
+		return;
 
 	max = get_max(array, size);
 	for (pos = 1; max / pos > 0; pos *= 10)
