@@ -8,7 +8,8 @@
 * @size: size of the array
 * Return: largest number in the array
 */
-int get_max(int *array, int size) {
+int get_max(int *array, int size)
+{
 
 	int i;
 	int max = array[0];
@@ -21,12 +22,14 @@ int get_max(int *array, int size) {
 }
 
 /**
-* counting_sort - counts the elements
+* counting_sort - uses counting sort to sort the elements
+* in the basis of significant places
 * @array: array of integers
 * @size: size of the array
 * @pos: position in the array
 */
-void counting_sort(int *array, int size, int pos) {
+void counting_sort(int *array, int size, int pos)
+{
 
 	int i;
 	int max = (array[0] / pos) % 10;
@@ -52,7 +55,7 @@ void counting_sort(int *array, int size, int pos) {
 
 	for (i = 0; i < size; i++)
 		count[(array[i] / pos) % 10]++;
-    
+
 
 	for (i = 1; i < 10; i++)
 		count[i] += count[i - 1];
@@ -66,8 +69,6 @@ void counting_sort(int *array, int size, int pos) {
 
 	for (i = 0; i < size; i++)
 		array[i] = result[i];
-
-
 	free(result);
 }
 
